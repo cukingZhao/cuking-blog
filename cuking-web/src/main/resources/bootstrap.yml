@@ -1,0 +1,12 @@
+spring:
+ cloud:
+  config:
+   profile: dev
+   label: master
+   discovery:
+    enabled: true
+    service-id: config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.2.201:7111/eureka/,http://192.168.2.202:7111/eureka/

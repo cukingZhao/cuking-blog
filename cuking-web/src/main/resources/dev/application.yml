@@ -1,0 +1,36 @@
+#查看springboot开启了哪些配置
+debug: false
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cms
+
+---
+spring:
+  profiles: dev
+  #数据库
+  datasource:
+    url: ${local.datasource.url}
+    username: ${local.datasource.name}
+    password: ${local.datasource.password}
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+   properties:
+    hibernate:
+      hbm2ddl:
+        auto: update
+   show-sql: true
+  #redis 配置
+  redis:
+    cluster:
+      nodes: ${local.redis.nodes}
+server:
+  port: 7113
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${local.defaultZone}
